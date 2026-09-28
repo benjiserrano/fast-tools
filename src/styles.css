@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+/* Paleta propia. Definida como tokens para que la Fase 6 pueda añadir tema
+   claro cambiando solo estas variables, sin tocar ningún componente. */
+@theme {
+  --color-ink-950: #080d18;
+  --color-ink-900: #0b1220;
+  --color-ink-850: #101a2d;
+  --color-ink-800: #16223a;
+  --color-ink-700: #1f2f4d;
+  --color-ink-600: #2c4068;
+
+  --color-mist-500: #64748b;
+  --color-mist-400: #94a3b8;
+  --color-mist-200: #cbd5e1;
+  --color-mist-50: #f1f5f9;
+
+  --color-bolt-400: #7dd3fc;
+  --color-bolt-500: #38bdf8;
+  --color-spark-400: #a78bfa;
+
+  --color-warn-400: #fbbf24;
+  --color-danger-400: #f87171;
+
+  --font-sans: "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "Cascadia Code", "Consolas", ui-monospace, monospace;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-ink-950);
+  color: var(--color-mist-200);
+  font-family: var(--font-sans);
+  /* App de escritorio: el texto no debe seleccionarse como en una web. */
+  user-select: none;
+  overflow: hidden;
+}
+
+.titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 38px;
+  flex: 0 0 38px;
+  background: var(--color-ink-900);
+  border-bottom: 1px solid var(--color-ink-800);
+  color: var(--color-mist-400);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  user-select: none;
+}
+
+.titlebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+  padding: 0 14px;
+  font-weight: 600;
+}
+
+.titlebar-mark {
+  color: var(--color-bolt-400);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.titlebar-controls {
+  display: flex;
+  align-items: stretch;
+  height: 100%;
+}
+
+.titlebar-button {
+  display: grid;
+  width: 46px;
+  height: 100%;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: var(--color-mist-400);
+  font-family: var(--font-sans);
+  line-height: 1;
+  cursor: pointer;
+}
+
+.titlebar-glyph {
+  position: relative;
+  display: block;
+  width: 12px;
+  height: 12px;
+}
+
+.titlebar-glyph-minimize::after {
+  position: absolute;
+  right: 0;
+  bottom: 2px;
+  left: 0;
+  height: 1px;
+  background: currentColor;
+  content: "";
+}
+
+.titlebar-glyph-maximize {
+  border: 1px solid currentColor;
+}
+
+.titlebar-glyph-close::before,
+.titlebar-glyph-close::after {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  width: 12px;
+  height: 1px;
+  background: currentColor;
+  content: "";
+}
+
+.titlebar-glyph-close::before {
+  transform: rotate(45deg);
+}
+
+.titlebar-glyph-close::after {
+  transform: rotate(-45deg);
+}
+
+.titlebar-button:hover {
+  background: var(--color-ink-800);
+  color: var(--color-mist-50);
+}
+
+.titlebar-close:hover {
+  background: #c42b3c;
+  color: white;
+}
+
+/* Las zonas de contenido sí permiten seleccionar y copiar. */
+.selectable {
+  user-select: text;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-ink-700);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ink-600);
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}

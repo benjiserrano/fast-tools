@@ -1,0 +1,11 @@
+{
+  // Los tests sí pueden leer el disco (por ejemplo `registry.rs` para validar el
+  // contrato con Rust). El código de la aplicación no: corre en un WebView y no
+  // debe ver los globales de Node, por eso esa separación vive en dos configs.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": ["node", "vitest/globals"]
+  },
+  "include": ["src/**/*.test.ts", "src/**/*.test.tsx"],
+  "exclude": []
+}

@@ -1,0 +1,5 @@
+# esbuild necesita su script de instalación para enlazar el binario nativo de
+# la plataforma; sin él Vite no puede compilar. Es la única excepción: cualquier
+# otra dependencia que pida ejecutar scripts debe revisarse antes de permitirla.
+allowBuilds:
+  esbuild: true
